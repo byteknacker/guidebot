@@ -1,5 +1,11 @@
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
-  message.channel.send("Test");
+  const serverID = message.guild.id;
+  const serverCollection = client.guilds.get(serverID);
+  console.log(serverCollection.members);
+
+  serverCollection.members.forEach(member => console.log(`Username: ${member.user.username}, User ID: ${member.user.id}`));
+
+  message.channel.send("The list of all members in this server has been sent to your console.");
 };
 
 exports.conf = {
